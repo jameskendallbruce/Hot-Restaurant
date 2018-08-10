@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hot Restaurant</title>
+
+    <!-- Borrowing some Bootstrap (which should automatically pull a reset.css) if necessary for grid layout -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <!-- link to jQuery cdn followed by link to the jQuery/Js file I made -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron bg-secondary text-white text-center" style="margin-top:20px">
+
+            <header class="header" style="border-bottom: white 2px solid; margin: 15px 0 15px 0">
+
+                <h1 style="font-size:48px">HOT RESTAURANT</h1>
+
+            </header>
+
+            <p class="form-group mb-2 comm" style="font-size:24px">Place a reservation below.</p>
+
+            <!-- having some issues with an href :/ -->
+            <row>
+
+                <col>
+                
+                    <a class="nav-link" href="/tables"><button class="btn mb-2 comm text-secondary" id="tables-button" style="font-size:24px">Current Tables</button></a>
+            
+                </col>
+                
+                <col>
+
+                
+                    <a class="nav-link" href="/"><button class="btn mb-2 comm text-secondary" id="res-button" style="font-size:24px">Home</button></a>
+
+                </col>
+
+            </row>
+
+        </div>
+
+        <form>
+
+            <div class="rounded form-header bg-secondary text-white px-2 my-2" style="font-size:24px">Fill out this form</div>
+
+            <div class="form-group row">
+                    <label for="reserve-name" class="col-sm-2 col-form-label" style="font-size:20px">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="reserve-name" style="font-size:20px">                        
+                    </div>
+            </div>
+
+            <div class="form-group row">
+                    <label for="reserve-phone" class="col-sm-2 col-form-label" style="font-size:20px">Phone Number</label>
+                    <div class="col-sm-10">
+                        <input type="phone" class="form-control" id="reserve-phone" style="font-size:20px">                        
+                    </div>
+            </div>
+
+            <div class="form-group row">
+                    <label for="reserve-email" class="col-sm-2 col-form-label" style="font-size:20px">E-Mail</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="reserve-email" style="font-size:20px">                        
+                    </div>
+            </div>
+
+            <div class="form-group row">
+                    <label for="reserve-Id" class="col-sm-2 col-form-label" style="font-size:20px">Unique Id</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="reserve-Id" style="font-size:20px">                        
+                    </div>
+            </div>
+
+            <button class="btn mb-2 comm text-white bg-secondary" id="submit-res" style="font-size:24px">Place Reservation</button>
+
+        </form>
+
+        <div id="control-panel" style="position:relative; bottom:25px; margin-top:50px">
+
+            <p>Control Panel</p>
+
+            <a href="/api/tables">API Table Link</a>
+            <span> | </span>
+            <a href="/api/waiting">API Wait List</a>
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+<script>
+
+$("#submit-res").click(function(event){
+
+    event.preventDefault();
+
+    var newReservation = {
+    customerName: $("#reserve-name").val().trim(),
+    customerPhone: $("#reserve-phone").val().trim(),
+    customerEmail: $("#reserve-email").val().trim(),
+    customerID: $("#reserve-Id").val().trim(),
+    }
+
+    console.log(newReservation);
+
+    $.post("/api/tables", newReservation)
+    .then(function(data) {
+        console.log(data);
+    });
+
+})
+
+
+
+// var newReservation = {
+//    customerName: $("#reserve-name").val().trim(),
+//    customerphone: $("#reserve-phone").val().trim(),
+//    customerEmail: $("#reserve-email").val().trim(),
+//    customerId: $("#reserve-Id").val().trim(),
+// }
+
+</script>
+</html>

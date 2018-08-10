@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hot Restaurant</title>
+    <!-- Borrowing some Bootstrap (which should automatically pull a reset.css) if necessary for grid layout -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <!-- link to jQuery cdn followed by link to the jQuery/Js file I made -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron bg-secondary text-white text-center" style="margin-top:20px">
+            <header class="header" style="border-bottom: white 2px solid; margin: 15px 0 15px 0">
+                <h1 style="font-size:48px">HOT RESTAURANT</h1>
+            </header>
+            <p class="form-group mb-2 comm" style="font-size:24px">We only have 5 tables! Book your reservation before they are all gone!</p>
+            <!-- having some issues with an href :confused: -->
+            <row>
+                <col>
+                <a class="nav-link" href="/">
+                    <button class="btn mb-2 comm text-secondary" id="home-button" style="font-size:24px">Home</button>
+                </a>
+                </col>
+                <col>
+                <a class="nav-link" href="/reserve">
+                    <button class="btn mb-2 comm text-secondary" id="res-button" style="font-size:24px">Make Reservations</button>
+                </a>
+                </col>
+            </row>
+        </div>
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-header">Current Reservations</h4>
+                    </div>
+                    <div class="card-body" id="tableSection">
+                        <div class="card" id="res1">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">1</span> | <span id="table-1"></span>
+                                </h2>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card" id="res2">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">2</span> | <span id="table-2"></span>
+                                </h2>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card" id="res3">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">3</span> | <span id="table-3"></span>
+                                </h2>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card" id="res4">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">4</span> | <span id="table-4"></span>
+                                </h2>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card" id="res5">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">5</span> | <span id="table-5"></span>
+                                </h2>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <div class="col-lg-12" id="waitList">
+                <div class="card ">
+                    <div class="card-body">
+                        <h4 class="card-header">Waiting List</h4>
+                    </div>
+                    <div class="card-body" id="waitSection">
+                        <!-- <div class="card" id="wait1">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">1</span> | Wait
+                                </h2>
+                            </div>
+                        </div>
+                        <br> -->
+                        <!-- <div class="card" id="wait2">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">2</span> | Wait
+                                </h2>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card" id="wait3">
+                            <div class="card-text">
+                                <h2>
+                                    <span class="badge badge-primary">3</span> | Wait
+                                </h2>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div id="control-panel" style="position:relative; bottom:25px; margin-top:50px">
+                    <p>Control Panel</p>
+                    <a href="/api/tables">API Table Link</a>
+                    <span> | </span>
+                    <a href="/api/waiting">API Wait List</a>
+                </div>
+            </div>
+        </div>
+</body>
+
+<script>
+
+$.get("/api/tables", function(data){
+
+    var num = 1
+
+    for (i = 0; i <data.length; i++){
+        $("#table-" + num).append(data[i].customerID)
+        num++;
+        console.log(data[i].customerID);
+    };
+
+
+})
+
+$.get("/api/waiting", function(data){
+
+    var num = 1;
+
+    for (i = 0; i <data.length; i++){
+        var newWait = $('<div class="card"><div class="card-text"><h2><span class="badge badge-primary" id="waitNum' + num + '">' + num + '</span> | <span id="waitID'+ num + '">' + data[i].customerID + '</span></h2></div></div>')
+        // $("#waitNum" + num).text(num);
+        // $("#waitID" + num).text(data[i].customerID);
+        // var newWait = $('<div>hello</div>')
+        $("#waitSection").append(newWait);
+        console.log(data)
+        num++;
+    };
+
+
+})
+
+
+</script>
+
+</html>
